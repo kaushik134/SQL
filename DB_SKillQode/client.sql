@@ -8,7 +8,7 @@ create table client_master(
    baldue numeric(38)
 );
 
--- insert recorde
+-- insert record
 insert into client_master values('C00001', 'Ivan', 'Bombay', 400054, 'Maharashtra', 15000);
 insert into client_master values('C00002', 'Vandana', 'Madras', 780001, 'Tamilnadu', 0);
 insert into client_master values('C00003', 'Pramada', 'Bombay', 400057, 'Maharashtra', 5000);
