@@ -1,5 +1,6 @@
 -- create table
-create table client_master(
+create table client_master
+(
    Clientno varchar(50) ,
    Name varchar(50),
    city varchar(50),
