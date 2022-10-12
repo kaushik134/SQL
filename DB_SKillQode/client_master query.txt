@@ -1,0 +1,90 @@
+1. Select Table Data
+mysql> select * from client_master;
++----------+---------+--------+---------+-------------+--------+
+| Clientno | Name    | city   | pincode | state       | baldue |
++----------+---------+--------+---------+-------------+--------+
+| C00001   | Ivan    | Bombay |  400054 | Maharashtra |  15000 |
+| C00002   | Vandana | Madras |  780001 | Tamilnadu   |      0 |
+| C00003   | Pramada | Bombay |  400057 | Maharashtra |   5000 |
+| C00004   | Basu    | Bombay |  400056 | Maharashtra |      0 |
+| C00005   | Ravi    | Delhi  |  100001 |             |   2000 |
+| C00006   | Rukmini | Bombay |  400050 | Maharashtra |      0 |
++----------+---------+--------+---------+-------------+--------+
+
+
+2.Select Alis name in table and particular column
+mysql> select name 'Client_Name',city from client_master;
++-------------+--------+
+| Client_Name | city   |
++-------------+--------+
+| Ivan        | Bombay |
+| Vandana     | Madras |
+| Pramada     | Bombay |
+| Basu        | Bombay |
+| Ravi        | Delhi  |
+| Rukmini     | Bombay |
++-------------+--------+
+
+
+3.Table Defination
+mysql> desc client_master;
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| Clientno | varchar(50)   | YES  |     | NULL    |       |
+| Name     | varchar(50)   | YES  |     | NULL    |       |
+| city     | varchar(50)   | YES  |     | NULL    |       |
+| pincode  | decimal(38,0) | YES  |     | NULL    |       |
+| state    | varchar(50)   | YES  |     | NULL    |       |
+| baldue   | decimal(38,0) | YES  |     | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+
+
+4.Select Particular name show city
+mysql> select name from client_master where city='Bombay';
++---------+
+| name    |
++---------+
+| Ivan    |
+| Pramada |
+| Basu    |
+| Rukmini |
++---------+
+
+
+5.Select Name from Table where salary>1000
+mysql> select name from client_master where baldue>1000;
++---------+
+| name    |
++---------+
+| Ivan    |
+| Pramada |
+| Ravi    |
++---------+
+
+
+6.Select salary not equal to 0
+mysql> select name,city,baldue from client_master where baldue !=0;
+mysql> select name,city,baldue from client_master where baldue <>0;
++---------+--------+--------+
+| name    | city   | baldue |
++---------+--------+--------+
+| Ivan    | Bombay |  15000 |
+| Pramada | Bombay |   5000 |
+| Ravi    | Delhi  |   2000 |
++---------+--------+--------+
+
+
+7.delete record particular
+mysql> delete from client_master where name = 'ivan';
+Query OK, 1 row affected (0.06 sec)
+
+
+8.drop table
+drop table table_name;
+
+
+9.update
+mysql> update client_master set city='surat' where city='bombay';
+Query OK, 3 rows affected (0.05 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
