@@ -22,7 +22,7 @@ insert into sales_order values('O19005','C00005','2004-04-20','Delhi','S00002','
 insert into sales_order values('O19006','C00006','2004-04-24','Bombay','S00003','F','N','2002-02-26','In Process');
 
 -- Show Tables
--- select * from sales_order;
+select * from sales_order;
 
 -- -- OUTPUT  :-
 -- mysql> desc sales_order;
