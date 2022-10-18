@@ -17,6 +17,7 @@ insert into client_master values('C00003', 'Pramada', 'Bombay', 400057, 'Maharas
 insert into client_master values('C00004', 'Basu', 'Bombay', 400056, 'Maharashtra', 8000);
 insert into client_master values('C00005', 'Ravi', 'Delhi', 100001, '', 2000);
 insert into client_master values('C00006', 'Rukmini', 'Bombay', 400050, 'Maharashtra', 12000);
+insert into client_master values('C00007', 'kaushik vaghasiya', 'surat', 394185, 'Gujarat', 12000);
 
 -- show table data
 select * from client_master;

@@ -88,3 +88,128 @@ drop table table_name;
 mysql> update client_master set city='surat' where city='bombay';
 Query OK, 3 rows affected (0.05 sec)
 Rows matched: 3  Changed: 3  Warnings: 0
+
+
+10.Ascending Order
+-> By Default Ascending Order
+mysql> select * from client_master order by Name;
++----------+---------+--------+---------+-------------+--------+
+| Clientno | Name    | city   | pincode | state       | baldue |
++----------+---------+--------+---------+-------------+--------+
+| C00004   | Basu    | Bombay |  400056 | Maharashtra |   8000 |
+| C00001   | Ivan    | Bombay |  400054 | Maharashtra |  15000 |
+| C00003   | Pramada | Bombay |  400057 | Maharashtra |   5000 |
+| C00005   | Ravi    | Delhi  |  100001 |             |   2000 |
+| C00006   | Rukmini | Bombay |  400050 | Maharashtra |  12000 |
+| C00002   | Vandana | Madras |  780001 | Tamilnadu   |  10000 |
++----------+---------+--------+---------+-------------+--------+
+
+
+11.Descending Order
+mysql> select * from client_master order by Name desc;
++----------+---------+--------+---------+-------------+--------+
+| Clientno | Name    | city   | pincode | state       | baldue |
++----------+---------+--------+---------+-------------+--------+
+| C00002   | Vandana | Madras |  780001 | Tamilnadu   |  10000 |
+| C00006   | Rukmini | Bombay |  400050 | Maharashtra |  12000 |
+| C00005   | Ravi    | Delhi  |  100001 |             |   2000 |
+| C00003   | Pramada | Bombay |  400057 | Maharashtra |   5000 |
+| C00001   | Ivan    | Bombay |  400054 | Maharashtra |  15000 |
+| C00004   | Basu    | Bombay |  400056 | Maharashtra |   8000 |
++----------+---------+--------+---------+-------------+--------+
+
+
+12. Distinct
+mysql> select distinct city from client_master;
++--------+
+| city   |
++--------+
+| Bombay |
+| Madras |
+| Delhi  |
++--------+
+
+
+13. Limit
+mysql> select * from client_master limit 5;
++----------+---------+--------+---------+-------------+--------+
+| Clientno | Name    | city   | pincode | state       | baldue |
++----------+---------+--------+---------+-------------+--------+
+| C00001   | Ivan    | Bombay |  400054 | Maharashtra |  15000 |
+| C00002   | Vandana | Madras |  780001 | Tamilnadu   |  10000 |
+| C00003   | Pramada | Bombay |  400057 | Maharashtra |   5000 |
+| C00004   | Basu    | Bombay |  400056 | Maharashtra |   8000 |
+| C00005   | Ravi    | Delhi  |  100001 |             |   2000 |
++----------+---------+--------+---------+-------------+--------+
+
+
+14. in
+mysql> select * from client_master
+    -> where city in('Bombay');
++----------+---------+--------+---------+-------------+--------+
+| Clientno | Name    | city   | pincode | state       | baldue |
++----------+---------+--------+---------+-------------+--------+
+| C00001   | Ivan    | Bombay |  400054 | Maharashtra |  15000 |
+| C00003   | Pramada | Bombay |  400057 | Maharashtra |   5000 |
+| C00004   | Basu    | Bombay |  400056 | Maharashtra |   8000 |
+| C00006   | Rukmini | Bombay |  400050 | Maharashtra |  12000 |
++----------+---------+--------+---------+-------------+--------+
+
+
+15. Not in
+mysql> select * from client_master
+    -> where city not in('Bombay');
++----------+---------+--------+---------+-----------+--------+
+| Clientno | Name    | city   | pincode | state     | baldue |
++----------+---------+--------+---------+-----------+--------+
+| C00002   | Vandana | Madras |  780001 | Tamilnadu |  10000 |
+| C00005   | Ravi    | Delhi  |  100001 |           |   2000 |
++----------+---------+--------+---------+-----------+--------+
+
+
+16. Like
+    i) First character serach :-
+    mysql> select * from client_master where name like 'r%';
+    +----------+---------+--------+---------+-------------+--------+
+    | Clientno | Name    | city   | pincode | state       | baldue |
+    +----------+---------+--------+---------+-------------+--------+
+    | C00005   | Ravi    | Delhi  |  100001 |             |   2000 |
+    | C00006   | Rukmini | Bombay |  400050 | Maharashtra |  12000 |
+    +----------+---------+--------+---------+-------------+--------+
+
+    ii) Last character serach :-
+    mysql> select * from client_master where name like '%a';
+    +----------+---------+--------+---------+-------------+--------+
+    | Clientno | Name    | city   | pincode | state       | baldue |
+    +----------+---------+--------+---------+-------------+--------+
+    | C00002   | Vandana | Madras |  780001 | Tamilnadu   |  10000 |
+    | C00003   | Pramada | Bombay |  400057 | Maharashtra |   5000 |
+    +----------+---------+--------+---------+-------------+--------+
+
+    iii) Second character serach :-
+    mysql> select * from client_master where name like '_a%';
+    +----------+---------+--------+---------+-------------+--------+
+    | Clientno | Name    | city   | pincode | state       | baldue |
+    +----------+---------+--------+---------+-------------+--------+
+    | C00002   | Vandana | Madras |  780001 | Tamilnadu   |  10000 |
+    | C00004   | Basu    | Bombay |  400056 | Maharashtra |   8000 |
+    | C00005   | Ravi    | Delhi  |  100001 |             |   2000 |
+    +----------+---------+--------+---------+-------------+--------+
+
+    iv) Last to second character serach :-
+    mysql> select * from client_master where name like '%n_';
+    +----------+---------+--------+---------+-------------+--------+
+    | Clientno | Name    | city   | pincode | state       | baldue |
+    +----------+---------+--------+---------+-------------+--------+
+    | C00002   | Vandana | Madras |  780001 | Tamilnadu   |  10000 |
+    | C00006   | Rukmini | Bombay |  400050 | Maharashtra |  12000 |
+    +----------+---------+--------+---------+-------------+--------+
+
+    v) Middle character serach:-
+    mysql> select * from client_master where name like '%d%';
+    +----------+---------+--------+---------+-------------+--------+
+    | Clientno | Name    | city   | pincode | state       | baldue |
+    +----------+---------+--------+---------+-------------+--------+
+    | C00002   | Vandana | Madras |  780001 | Tamilnadu   |  10000 |
+    | C00003   | Pramada | Bombay |  400057 | Maharashtra |   5000 |
+    +----------+---------+--------+---------+-------------+--------+

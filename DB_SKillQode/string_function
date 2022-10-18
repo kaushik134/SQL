@@ -1,0 +1,253 @@
+1. left
+    mysql> select left(name,3)
+    -> from client_master;
+    +--------------+
+    | left(name,3) |
+    +--------------+
+    | Iva          |
+    | Van          |
+    | Pra          |
+    | Bas          |
+    | Rav          |
+    | Ruk          |
+    +--------------+
+
+2. Length
+    mysql> select length(name)
+        -> from client_master;
+    +--------------+
+    | length(name) |
+    +--------------+
+    |            4 |
+    |            7 |
+    |            7 |
+    |            4 |
+    |            4 |
+    |            7 |
+    +--------------+
+
+3. Lower
+    mysql> select lower(name)
+        -> from client_master;
+    +-------------+
+    | lower(name) |
+    +-------------+
+    | ivan        |
+    | vandana     |
+    | pramada     |
+    | basu        |
+    | ravi        |
+    | rukmini     |
+    +-------------+
+
+4. Lpad
+    mysql> select lpad(name,10,"ABCD")
+        -> from client_master;
+    +----------------------+
+    | lpad(name,10,"ABCD") |
+    +----------------------+
+    | ABCDABIvan           |
+    | ABCVandana           |
+    | ABCPramada           |
+    | ABCDABBasu           |
+    | ABCDABRavi           |
+    | ABCRukmini           |
+    +----------------------+
+
+5. Ltrim
+    mysql> select ltrim(name)
+        -> from client_master;
+    +-------------+
+    | ltrim(name) |
+    +-------------+
+    | Ivan        |
+    | Vandana     |
+    | Pramada     |
+    | Basu        |
+    | Ravi        |
+    | Rukmini     |
+    +-------------+
+
+6.MID
+    mysql> select mid(name,2,4)
+        -> from client_master;
+    +---------------+
+    | mid(name,2,4) |
+    +---------------+
+    | van           |
+    | anda          |
+    | rama          |
+    | asu           |
+    | avi           |
+    | ukmi          |
+    +---------------+
+
+7. Repeat
+    mysql> select repeat(name,2)
+        -> from client_master;
+    +----------------+
+    | repeat(name,2) |
+    +----------------+
+    | IvanIvan       |
+    | VandanaVandana |
+    | PramadaPramada |
+    | BasuBasu       |
+    | RaviRavi       |
+    | RukminiRukmini |
+    +----------------+
+
+8. Reverse
+    mysql> select reverse(name)
+        -> from client_master;
+    +---------------+
+    | reverse(name) |
+    +---------------+
+    | navI          |
+    | anadnaV       |
+    | adamarP       |
+    | usaB          |
+    | ivaR          |
+    | inimkuR       |
+    +---------------+
+
+9. Replace
+    mysql> select replace(name,"a","n")
+        -> from client_master;
+    +-----------------------+
+    | replace(name,"a","n") |
+    +-----------------------+
+    | Ivnn                  |
+    | Vnndnnn               |
+    | Prnmndn               |
+    | Bnsu                  |
+    | Rnvi                  |
+    | Rukmini               |
+    +-----------------------+
+
+10. Right
+    mysql> select right(name,3)
+        -> from client_master;
+    +---------------+
+    | right(name,3) |
+    +---------------+
+    | van           |
+    | ana           |
+    | ada           |
+    | asu           |
+    | avi           |
+    | ini           |
+    +---------------+
+
+11. Rpad
+    mysql> select rpad(name,10,"ABCD")
+        -> from client_master;
+    +----------------------+
+    | rpad(name,10,"ABCD") |
+    +----------------------+
+    | IvanABCDAB           |
+    | VandanaABC           |
+    | PramadaABC           |
+    | BasuABCDAB           |
+    | RaviABCDAB           |
+    | RukminiABC           |
+    +----------------------+
+
+12. Rtrim
+    mysql> select rtrim(name)
+        -> from client_master;
+    +-------------+
+    | rtrim(name) |
+    +-------------+
+    | Ivan        |
+    | Vandana     |
+    | Pramada     |
+    | Basu        |
+    | Ravi        |
+    | Rukmini     |
+    +-------------+
+
+13. strcmp
+    mysql> select strcmp(name,name)
+        -> from client_master;
+    +-------------------+
+    | strcmp(name,name) |
+    +-------------------+
+    |                 0 |
+    |                 0 |
+    |                 0 |
+    |                 0 |
+    |                 0 |
+    |                 0 |
+    +-------------------+
+    6 rows in set (0.04 sec)
+
+    mysql> select strcmp(name,city)
+        -> from client_master;
+    +-------------------+
+    | strcmp(name,city) |
+    +-------------------+
+    |                 1 |
+    |                 1 |
+    |                 1 |
+    |                -1 |
+    |                 1 |
+    |                 1 |
+    +-------------------+
+
+14. substr
+    mysql> select substr(name,2,4)
+        -> from client_master;
+    +------------------+
+    | substr(name,2,4) |
+    +------------------+
+    | van              |
+    | anda             |
+    | rama             |
+    | asu              |
+    | avi              |
+    | ukmi             |
+    +------------------+
+
+15. substring
+    mysql> select substring(name,2,4)
+        -> from client_master;
+    +---------------------+
+    | substring(name,2,4) |
+    +---------------------+
+    | van                 |
+    | anda                |
+    | rama                |
+    | asu                 |
+    | avi                 |
+    | ukmi                |
+    +---------------------+
+
+16. trim
+    mysql> select trim(name)
+        -> from client_master;
+    +-------------------+
+    | trim(name)        |
+    +-------------------+
+    | Ivan              |
+    | Vandana           |
+    | Pramada           |
+    | Basu              |
+    | Ravi              |
+    | Rukmini           |
+    | kaushik vaghasiya |
+    +-------------------+
+
+17. Upper
+    mysql> select upper(name)
+        -> from client_master;
+    +-------------------+
+    | upper(name)       |
+    +-------------------+
+    | IVAN              |
+    | VANDANA           |
+    | PRAMADA           |
+    | BASU              |
+    | RAVI              |
+    | RUKMINI           |
+    | KAUSHIK VAGHASIYA |
+    +-------------------+
