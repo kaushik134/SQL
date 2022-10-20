@@ -1,44 +1,31 @@
--- Create Table
--- create table student(
---     Roll_no int,
---     Name varchar(30),
---     Mobile numeric,
---     CONSTRAINT primary key(Roll_no,Name,Mobile)
--- );
+Create Table
+create table student(
+    Roll_no int,
+    Name varchar(30),
+    Mobile numeric,
+    BOD date,
+    CONSTRAINT primary key(Roll_no,Name,Mobile)
+);
 
 -- Insert Table
-insert into student values(1,'Kaushik',6353125194);
-insert into student values(2,'Dhruvik',6355968944);
-insert into student values(3,'Harshil',7656986754);
+insert into student values(1,'Kaushik',6353125194,'2002-08-06');
+insert into student values(2,'Dhruvik',6355968944,'2003-09-06');
+insert into student values(3,'Harshil',7656986754,'2003-12-21');
 
 -- Select Table :-
 select * from student;
 
--- OutPut:-
--- Query OK, 1 row affected (0.01 sec)
+1. Age find 
+    mysql> update student
+        -> set age=date_format(from_days(datediff(now(),BOD)),"%y");
+    Query OK, 3 rows affected (0.04 sec)
+    Rows matched: 3  Changed: 3  Warnings: 0
 
--- Query OK, 1 row affected (0.00 sec)
-
--- Query OK, 1 row affected (0.00 sec)
-
--- +---------+---------+------------+
--- | Roll_no | Name    | Mobile     |
--- +---------+---------+------------+
--- |       1 | Kaushik | 6353125194 |
--- |       2 | Dhruvik | 6355968944 |
--- |       3 | Harshil | 7656986754 |
--- +---------+---------+------------+
--- 3 rows in set (0.00 sec)
-
--- mysql> source D:\Tution\SQL\DB_SKillQode\student.sql
--- ERROR 1062 (23000): Duplicate entry '1-Kaushik-6353125194' for key 'student.PRIMARY'
--- ERROR 1062 (23000): Duplicate entry '2-Dhruvik-6355968944' for key 'student.PRIMARY'
--- ERROR 1062 (23000): Duplicate entry '3-Harshil-7656986754' for key 'student.PRIMARY'
--- +---------+---------+------------+
--- | Roll_no | Name    | Mobile     |
--- +---------+---------+------------+
--- |       1 | Kaushik | 6353125194 |
--- |       2 | Dhruvik | 6355968944 |
--- |       3 | Harshil | 7656986754 |
--- +---------+---------+------------+
--- 3 rows in set (0.00 sec)
+    mysql> select * from student;
+    +---------+---------+------------+------------+------+
+    | Roll_no | Name    | Mobile     | BOD        | age  |
+    +---------+---------+------------+------------+------+
+    |       1 | Kaushik | 6353125194 | 2002-08-06 |   20 |
+    |       2 | Dhruvik | 6355968944 | 2003-09-06 |   19 |
+    |       3 | Harshil | 7656986754 | 2003-12-21 |   18 |
+    +---------+---------+------------+------------+------+
