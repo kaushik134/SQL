@@ -1,3 +1,4 @@
+-- Manufacture Table
 create table manufacture(
     code int,
     name text,
@@ -12,6 +13,7 @@ insert into manufacture values(4, 'Iomega' ) ;
 insert into manufacture values(5, 'Fujitsu');
 insert into manufacture values(6, 'Winchester');
 
+-- Products Table
 create table products(
     code int,
     name text,
@@ -32,6 +34,8 @@ insert into products values(8, 'Printer', 270,3);
 insert into products values(9, 'Toner cartridge' ,66,3);
 insert into products values(10, 'DVD burner', 180,2);
 
+
+-- Query
 1.1 Select the names of all the products in the store.
     mysql> select name from products;
     +-----------------+
@@ -148,6 +152,8 @@ insert into products values(10, 'DVD burner', 180,2);
     | DVD drive  |   180 |
     +------------+-------+
 
+1.10 Select all the data from the products, including all the data for each products manufacturer.
+1.11 Select the product name, price, and manufacturer name of all the products.
 1.12 Select the average price of each manufacturer's products, showing only the manufacturer's code.
     mysql> select avg(price) from products
         -> where manufacture;
@@ -157,7 +163,9 @@ insert into products values(10, 'DVD burner', 180,2);
     |      154.1 |
     +------------+
 
- 1.15 Select the name and price of the cheapest product.
+1.13 Select the average price of each manufacturer's products, showing the manufacturer's name.
+1.14 Select the names of manufacturer whose products have an average price larger than or equal to $150.
+1.15 Select the name and price of the cheapest product.
     mysql> select name,price from products order by price limit 1;
     +-------------+-------+
     | name        | price |
@@ -165,6 +173,7 @@ insert into products values(10, 'DVD burner', 180,2);
     | Floppy disk |     5 |
     +-------------+-------+
     
+1.16 Select the name of each manufacturer along with the name and price of its most expensive product.
  1.17 Add a new product: Loudspeakers, $70, manufacturer 2.
     mysql> insert into products values(11,'Loudspeakers',70,2);
     Query OK, 1 row affected (0.04 sec)
