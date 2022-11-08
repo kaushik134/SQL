@@ -162,7 +162,7 @@ insert into products values(10, 'DVD burner', 180,2);
     +------------+
     |      154.1 |
     +------------+
-
+    
 1.13 Select the average price of each manufacturer's products, showing the manufacturer's name.
 1.14 Select the names of manufacturer whose products have an average price larger than or equal to $150.
 1.15 Select the name and price of the cheapest product.
