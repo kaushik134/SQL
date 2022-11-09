@@ -195,16 +195,52 @@ insert into products values(10, 'DVD burner', 180,2);
     +-----------------+-------+-----------------+
 
 1.12 Select the average price of each manufacturer's products, showing only the manufacturer's code.
-    mysql> select avg(price) from products
-        -> where manufacture;
-    +------------+
-    | avg(price) |
-    +------------+
-    |      154.1 |
-    +------------+
+    mysql> select avg(price) , manufacture.code
+        -> from products,manufacture
+        -> where products.manufacture=manufacture.code
+        -> group by manufacture.code;
+    +------------+------+
+    | avg(price) | code |
+    +------------+------+
+    |        240 |    5 |
+    |       62.5 |    6 |
+    |        150 |    4 |
+    |        240 |    1 |
+    |        130 |    2 |
+    |        168 |    3 |
+    +------------+------+
     
 1.13 Select the average price of each manufacturer's products, showing the manufacturer's name.
+    mysql> select avg(price) , manufacture.name
+        -> from products,manufacture
+        -> where products.manufacture=manufacture.code
+        -> group by manufacture.name;
+    +------------+-----------------+
+    | avg(price) | name            |
+    +------------+-----------------+
+    |        240 | Fujitsu         |
+    |       62.5 | Winchester      |
+    |        150 | Iomega          |
+    |        240 | Sony            |
+    |        130 | Creative Labs   |
+    |        168 | Hewlett-Packard |
+    +------------+-----------------+
+
 1.14 Select the names of manufacturer whose products have an average price larger than or equal to $150.
+    mysql> select avg(price) , manufacture.name
+        -> from manufacture , products
+        -> where manufacture.code=products.manufacture
+        -> group by manufacture.name
+        -> having avg(price)>=150;
+    +------------+-----------------+
+    | avg(price) | name            |
+    +------------+-----------------+
+    |        240 | Fujitsu         |
+    |        150 | Iomega          |
+    |        240 | Sony            |
+    |        168 | Hewlett-Packard |
+    +------------+-----------------+
+
 1.15 Select the name and price of the cheapest product.
     mysql> select name,price from products order by price limit 1;
     +-------------+-------+
@@ -214,6 +250,17 @@ insert into products values(10, 'DVD burner', 180,2);
     +-------------+-------+
     
 1.16 Select the name of each manufacturer along with the name and price of its most expensive product.
+    mysql> select manufacture.name,products.name,products.price
+        -> from manufacture,products
+        -> where manufacture.code=products.manufacture
+        -> group by manufacture.name
+        -> having max(price)=(select max(price) from products);
+    +-----------------+---------------+-------+
+    | name            | name          | price |
+    +-----------------+---------------+-------+
+    | Hewlett-Packard | Laser Printer |   270 |
+    +-----------------+---------------+-------+
+    
 1.17 Add a new product: Loudspeakers, $70, manufacturer 2.
     mysql> insert into products values(11,'Loudspeakers',70,2);
     Query OK, 1 row affected (0.04 sec)
