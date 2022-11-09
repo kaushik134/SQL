@@ -153,7 +153,47 @@ insert into products values(10, 'DVD burner', 180,2);
     +------------+-------+
 
 1.10 Select all the data from the products, including all the data for each products manufacturer.
+    mysql> select products.code,products.name,products.price,products.manufacture,manufacture.code,manufacture.name
+        -> from products
+        -> inner join manufacture
+        -> on manufacture.code=products.manufacture;
+    +------+-----------------+-------+-------------+------+-----------------+
+    | code | name            | price | manufacture | code | name            |
+    +------+-----------------+-------+-------------+------+-----------------+
+    |    5 | Monitor         |   240 |           1 |    1 | Sony            |
+    |    6 | DVD drive       |   180 |           2 |    2 | Creative Labs   |
+    |    7 | CD drive        |    90 |           2 |    2 | Creative Labs   |
+    |   10 | DVD burner      |   180 |           2 |    2 | Creative Labs   |
+    |   11 | Loudspeakers    |    70 |           2 |    2 | Creative Labs   |
+    |    8 | Laser Printer   |   270 |           3 |    3 | Hewlett-Packard |
+    |    9 | Toner cartridge |    66 |           3 |    3 | Hewlett-Packard |
+    |    3 | ZIP drive       |   150 |           4 |    4 | Iomega          |
+    |    1 | Hard drive      |   240 |           5 |    5 | Fujitsu         |
+    |    2 | Memory          |   120 |           6 |    6 | Winchester      |
+    |    4 | Floppy disk     |     5 |           6 |    6 | Winchester      |
+    +------+-----------------+-------+-------------+------+-----------------+
+
 1.11 Select the product name, price, and manufacturer name of all the products.
+    mysql> select  products.name,products.price,manufacture.name
+        -> from products
+        -> join manufacture
+        -> on products.manufacture=manufacture.code;
+    +-----------------+-------+-----------------+
+    | name            | price | name            |
+    +-----------------+-------+-----------------+
+    | Monitor         |   240 | Sony            |
+    | DVD drive       |   180 | Creative Labs   |
+    | CD drive        |    90 | Creative Labs   |
+    | DVD burner      |   180 | Creative Labs   |
+    | Loudspeakers    |    70 | Creative Labs   |
+    | Laser Printer   |   270 | Hewlett-Packard |
+    | Toner cartridge |    66 | Hewlett-Packard |
+    | ZIP drive       |   150 | Iomega          |
+    | Hard drive      |   240 | Fujitsu         |
+    | Memory          |   120 | Winchester      |
+    | Floppy disk     |     5 | Winchester      |
+    +-----------------+-------+-----------------+
+
 1.12 Select the average price of each manufacturer's products, showing only the manufacturer's code.
     mysql> select avg(price) from products
         -> where manufacture;
@@ -174,7 +214,7 @@ insert into products values(10, 'DVD burner', 180,2);
     +-------------+-------+
     
 1.16 Select the name of each manufacturer along with the name and price of its most expensive product.
- 1.17 Add a new product: Loudspeakers, $70, manufacturer 2.
+1.17 Add a new product: Loudspeakers, $70, manufacturer 2.
     mysql> insert into products values(11,'Loudspeakers',70,2);
     Query OK, 1 row affected (0.04 sec)
 
