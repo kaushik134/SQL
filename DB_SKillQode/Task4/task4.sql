@@ -175,3 +175,19 @@
     +--------------+---------+-----------+----------+
 
 3. Exrecise on Sub-Queries
+
+    A. Find the productno and description of non-moving products i.e. products not being sold.
+        mysql> select productno,description from product_master
+        -> where productno not in (select productno from sod);
+    +-----------+-------------+
+    | productno | description |
+    +-----------+-------------+
+    | P00007    | 540 HDD     |
+    | P00009    | 1.22 Drive  |
+    +-----------+-------------+
+
+    B. List the customer name , city , state and pincode for the client who has placed order no 'O19001'.
+    select name,city,state,pincode,orderno from client_master,sales_order;
+    where orderno=(
+    select orderno from sales_order
+    where orderno='O19001');
