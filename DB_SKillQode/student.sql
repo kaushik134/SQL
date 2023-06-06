@@ -1,4 +1,4 @@
-Create Table
+-- Create Table
 create table student(
     Roll_no int,
     Name varchar(30),
